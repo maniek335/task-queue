@@ -1,0 +1,23 @@
+# Markdown
+*.md
+
+# Git
+.gitignore
+.git
+
+# Docker
+.dockerignore
+Dockerfile
+
+# Python
+.python-version
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+*.pyz
+*.pywz
+*.pyzw
+*.pyzwz
