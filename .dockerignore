@@ -21,3 +21,6 @@ __pycache__/
 *.pywz
 *.pyzw
 *.pyzwz
+
+# CI/CD
+.github/
