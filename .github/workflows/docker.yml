@@ -3,10 +3,10 @@ name: Build and Publish Docker Image
 on:
   push:
     branches:
-      - '**'  # Trigger on push to any branch
+      - "**" # Trigger on push to any branch
   pull_request:
     branches:
-      - '**'  # Also trigger on PRs (optional, can be removed if not needed)
+      - "**" # Also trigger on PRs (optional, can be removed if not needed)
 
 env:
   REGISTRY: ghcr.io
@@ -52,4 +52,9 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: Image digest
-        run: echo "Image pushed with tags: ${{ steps.branch.outputs.name }} and ${{ github.sha }}"
+        run: |
+          REGISTRY="${{ env.REGISTRY }}"
+          IMAGE_NAME="${{ env.IMAGE_NAME }}"
+          BRANCH_TAG="${REGISTRY}/${IMAGE_NAME}:${{ steps.branch.outputs.name }}"
+          COMMIT_TAG="${REGISTRY}/${IMAGE_NAME}:${{ github.sha }}"
+          echo "Image pushed with tags: $BRANCH_TAG and $COMMIT_TAG"
